@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: searxng
+    env: docker
+    # Tell Render where the Dockerfile is located
+    dockerContext: ./searxng
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    # Set a secure, random secret key automatically
+    envVars:
+      - key: SEARXNG_SECRET_KEY
+        generateValue: true
+    # Optional: Specify the free plan instance type
+    plan: free
